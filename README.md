@@ -122,14 +122,14 @@ data/nuscenes
 Train SparseOcc with 8 GPUs:
 
 ```
-torchrun --nproc_per_node 8 train.py --config configs/sparseocc_r50_nuimg_704x256_8f.py
+torchrun --nproc_per_node 8 train.py --config configs/r50_nuimg_704x256_8f.py
 ```
 
 Train SparseOcc with 4 GPUs (i.e the last four GPUs):
 
 ```
 export CUDA_VISIBLE_DEVICES=4,5,6,7
-torchrun --nproc_per_node 4 train.py --config configs/sparseocc_r50_nuimg_704x256_8f.py
+torchrun --nproc_per_node 4 train.py --config configs/r50_nuimg_704x256_8f.py
 ```
 
 The batch size for each GPU will be scaled automatically. So there is no need to modify the `batch_size` in config files.
@@ -140,14 +140,14 @@ Single-GPU evaluation:
 
 ```
 export CUDA_VISIBLE_DEVICES=0
-python val.py --config configs/sparseocc_r50_nuimg_704x256_8f.py --weights checkpoints/sparseocc_r50_nuimg_704x256_8f.pth
+python val.py --config configs/r50_nuimg_704x256_8f.py --weights checkpoints/sparseocc_r50_nuimg_704x256_8f.pth
 ```
 
 Multi-GPU evaluation:
 
 ```
 export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
-torchrun --nproc_per_node 8 val.py --config configs/sparseocc_r50_nuimg_704x256_8f.py --weights checkpoints/sparseocc_r50_nuimg_704x256_8f.pth
+torchrun --nproc_per_node 8 val.py --config configs/r50_nuimg_704x256_8f.py --weights checkpoints/sparseocc_r50_nuimg_704x256_8f.pth
 ```
 
 ## Timing
@@ -156,7 +156,7 @@ FPS is measured with a single GPU:
 
 ```
 export CUDA_VISIBLE_DEVICES=0
-python timing.py --config configs/sparseocc_r50_nuimg_704x256_8f.py --weights checkpoints/sparseocc_r50_nuimg_704x256_8f.pth
+python timing.py --config configs/r50_nuimg_704x256_8f.py --weights checkpoints/sparseocc_r50_nuimg_704x256_8f.pth
 ```
 
 ## Acknowledgements
